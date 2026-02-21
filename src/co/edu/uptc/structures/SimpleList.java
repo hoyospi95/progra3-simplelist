@@ -123,8 +123,16 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public int indexOf(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+		Node<T> aux = head;
+        int i = 0;
+        while(aux != null){
+            if(aux.getValue().equals(o)){
+                return i;
+            }
+            i++;
+            aux = aux.getNext();
+        }
+        return -1;
 	}
 
 	@Override
