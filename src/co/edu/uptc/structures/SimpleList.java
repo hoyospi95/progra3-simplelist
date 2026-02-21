@@ -129,8 +129,18 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public int lastIndexOf(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+		int index = -1;
+		int currentPos = 0;
+		Node<V> current = head;
+		while (current != null) {
+			if (current.data != null && current.data.equals(element) ||
+					current.data == element) {
+				index = currentPos;
+			}
+			current = current.next;
+			currentPos++;
+		}
+		return index;
 	}
 
 	@Override
