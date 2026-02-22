@@ -75,10 +75,34 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public boolean addAll(int index, Collection<? extends T> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	    if (c == null) throw new NullPointerException("Collection cannot be null");
+	    if (index < 0 || index > size()) throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
+	    if (c.isEmpty()) return false;
 
+	    for (T element : c) {
+	        if (element == null) throw new NullPointerException("Collection cannot contain null elements");
+	    }
+
+	    Node<T> prev = null;
+	    Node<T> current = head;
+	    for (int i = 0; i < index; i++) {
+	        prev = current;
+	        current = current.getNext();
+	    }
+
+	    for (T element : c) {
+	        Node<T> newNode = new Node<>(element);
+	        newNode.setNext(current);
+	        if (prev == null) {
+	            head = newNode;
+	        } else {
+	            prev.setNext(newNode);
+	        }
+	        prev = newNode;
+	    }
+
+	    return true;
+	}
 	@Override
 	public boolean removeAll(Collection<?> c) {
 		// TODO Auto-generated method stub
