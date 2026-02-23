@@ -34,8 +34,22 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public boolean contains(Object o) {
-		// TODO Auto-generated method stub
-		return false;
+		Node<T> temporalNode = head;
+
+    while (temporalNode != null) {
+        if (o == null) {
+            if (temporalNode.getValue() == null) {
+                return true;
+            }
+        } else {
+            if (o.equals(temporalNode.getValue())) {
+                return true;
+            }
+        }
+        temporalNode = temporalNode.getNext();
+    }
+
+    return false;
 	}
 
 	@Override
