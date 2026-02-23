@@ -193,7 +193,7 @@ public class SimpleList<T> implements List<T> {
 
 		} else {
 			Node<T> aux = head;
-			Node<T> prev = aux;
+			Node<T> prev = null;
 			boolean delete = false;
 
 			while (aux != null) {
