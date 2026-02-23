@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class SimpleList<T> implements List<T> {
-    private Node<T> head;
+	private Node<T> head;
 
-    public SimpleList() {
-    	head = null;
-    }
+	public SimpleList() {
+		head = null;
+	}
 
 	@Override
 	public int size() {
@@ -27,7 +27,19 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public boolean contains(Object o) {
-		// TODO Auto-generated method stub
+		Node<T> temporalNode = head;
+		while (temporalNode != null) {
+			if (o == null) {
+				if (temporalNode.getValue() == null) {
+					return true;
+				}
+			} else {
+				if (o.equals(temporalNode.getValue())) {
+					return true;
+				}
+			}
+			temporalNode = temporalNode.getNext();
+		}
 		return false;
 	}
 
@@ -94,7 +106,7 @@ public class SimpleList<T> implements List<T> {
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -112,7 +124,7 @@ public class SimpleList<T> implements List<T> {
 	@Override
 	public void add(int index, T element) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
