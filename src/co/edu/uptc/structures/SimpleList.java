@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class SimpleList<T> implements List<T> {
-    private Node<T> head;
+	private Node<T> head;
 
-    public SimpleList() {
-    	head = null;
-    }
+	public SimpleList() {
+		head = null;
+	}
 
 	@Override
 	public int size() {
@@ -81,8 +81,35 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		if (c == null) {
+			throw new NullPointerException();
+		}
+
+		if (head == null) {
+			return false;
+
+		} else {
+			Node<T> aux = head;
+			Node<T> prev = aux;
+			boolean delete = false;
+
+			while (aux != null) {
+
+				if (c.contains(aux.getValue())) {
+					if (prev == null) {
+						head = aux.getNext();
+					} else {
+						prev.setNext(aux.getNext());
+					}
+					delete = true;
+				} else {
+					prev = aux;
+				}
+				aux = aux.getNext();
+			}
+			return delete;
+		}
 	}
 
 	@Override
@@ -94,7 +121,7 @@ public class SimpleList<T> implements List<T> {
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -112,7 +139,7 @@ public class SimpleList<T> implements List<T> {
 	@Override
 	public void add(int index, T element) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
