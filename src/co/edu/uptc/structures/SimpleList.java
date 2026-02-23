@@ -369,13 +369,13 @@ public void add(int index, T element) {
 	public int lastIndexOf(Object o) {
 		int index = -1;
 		int currentPos = 0;
-		Node<V> current = head;
+		Node<T> current = head;
 		while (current != null) {
-			if (current.data != null && current.data.equals(element) ||
-					current.data == element) {
+			if (current.getValue() != null && current.getValue().equals(o) ||
+					current.getValue() == o) {
 				index = currentPos;
 			}
-			current = current.next;
+			current = current.getNext();
 			currentPos++;
 		}
 		return index;
