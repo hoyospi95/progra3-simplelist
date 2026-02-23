@@ -1,6 +1,7 @@
 package co.edu.uptc.structures;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -212,8 +213,19 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public ListIterator<T> listIterator(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (index < 0 || index > size()) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        ArrayList<T> temp = new ArrayList<>();
+
+        Node<T> current = head;
+        while (current != null) {
+            temp.add(current.getValue());
+            current = current.getNext();
+        }
+
+        return temp.listIterator(index);
 	}
 
 	@Override
