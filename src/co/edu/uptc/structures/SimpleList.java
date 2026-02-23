@@ -61,8 +61,14 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public Object[] toArray() {
-		// TODO Auto-generated method stub
-		return null;
+	    Object[] array = new Object[size()];
+	    Node<T> current = head;
+	    int index = 0;
+	    while (current != null) {
+	        array[index++] = current.getValue();
+	        current = current.getNext();
+	    }
+	    return array;
 	}
 
 	@Override
