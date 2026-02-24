@@ -392,19 +392,7 @@ public void add(int index, T element) {
 
 	@Override
 	public ListIterator<T> listIterator(int index) {
-		if (index < 0 || index > size()) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        ArrayList<T> temp = new ArrayList<>();
-
-        Node<T> current = head;
-        while (current != null) {
-            temp.add(current.getValue());
-            current = current.getNext();
-        }
-
-        return temp.listIterator(index);
+		throw new UnsupportedOperationException("listIterator(int index) no es soportado en lista simplemente enlazada");
 	}
 
 	@Override
