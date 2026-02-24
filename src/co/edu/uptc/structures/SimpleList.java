@@ -57,8 +57,25 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public boolean remove(Object o) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isFounded = false;
+		Node<T> actual = head;
+		Node<T> previous = head;
+		
+		if (head != null && head.getValue().equals(o)){
+			head = head.getNext();
+		}
+		else{
+			while (actual != null && !isFounded){
+				if (actual.getValue().equals(o)){
+					previous.setNext(actual.getNext());
+					isFounded = true;
+				}else{
+					previous = actual;
+					actual = actual.getNext();
+				}
+			}
+		}
+		return isFounded;
 	}
 
 	@Override
