@@ -111,8 +111,47 @@ public class SimpleList<T> implements List<T> {
 
 	@Override
 	public void add(int index, T element) {
-		// TODO Auto-generated method stub
-		
+		int size = 0;
+        Node<T> tail = null;
+        Node<T> newNode = new Node<T>(element);
+        //excepciones
+        Node<T> temp = head;
+
+        while (temp != null) {
+            tail = temp;        
+            temp = temp.getNext();
+            size++;
+        }
+        //si el indice esta por debajo o por fuera
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        //si se ingresa un  objeto nulo
+        if (element == null) {
+            throw new NullPointerException();
+        }
+        //si la lista esta vacia
+        if (size == 0) {
+            head = newNode;
+            tail = newNode;
+        } //INSERTAR AL PRINCIPIO
+        else if (index == 0) {
+            newNode.setNext(head);
+            head = newNode;
+            //si esta al final
+        } else {
+            Node<T> currentNode = head;
+            for (int i = 0; i < index - 1; i++) {
+                currentNode = currentNode.getNext();
+            }
+
+            newNode.setNext(currentNode.getNext());
+            currentNode.setNext(newNode);
+            if (index == size) {
+                tail.setNext(newNode);
+                tail = newNode;
+            }
+        }
 	}
 
 	@Override
