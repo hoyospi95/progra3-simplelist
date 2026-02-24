@@ -307,7 +307,7 @@ public void add(int index, T element) {
             //si esta al final
         } else {
             Node<T> currentNode = head;
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 currentNode = currentNode.getNext();
             }
 
@@ -318,7 +318,6 @@ public void add(int index, T element) {
                 tail = newNode;
             }
         }
-
     }
 
 	@Override
